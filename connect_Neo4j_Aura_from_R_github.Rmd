@@ -7,6 +7,14 @@ if(length(new.packages)) install.packages(new.packages)
 lapply(list.packages, require, character.only = T)
 ```
 
+```{r}
+# install Python packages
+virtualenv_install(envname = "my_new_env",c("neo4j","pandas"))
+# use_virtualenv("/Cloud/project/my_new_env", required = TRUE)
+py_run_string("from neo4j import GraphDatabase")
+py_run_string("import pandas as pd")
+```
+
 ```{python}
 # Load a graph dataset into Neo4j
 # Thank you to @seankrobinson for the Python load demo
@@ -100,26 +108,3 @@ head(n)
 head(e)
 ```
 
-```{r}
-# Visualize Network
-visNetwork(
-  # height = 900, width = 900, background = "#f8f8ff",
-  n, # nodes
-  e  # edges
-) %>%
-  # visLegend() %>%
-  visGroups(groupname = "group", shape = "icon", icon = list(code = "f275", size = 75, color = "blue")) %>%
-  visNodes(mass = 12, physics = T) %>%
-    visLayout(randomSeed = 12345) %>%
-    visInteraction(multiselect = T) %>%
-    visOptions(selectedBy = "label",
-               highlightNearest = T,
-               nodesIdSelection = T) %>%
-    visEdges(shadow = F,
-             smooth = F,
-             arrows = list(to = list(enabled = T, scaleFactor = 2)),
-             color = list(color = "lightblue", highlight = "red")) %>%
-    visPhysics(stabilization = TRUE, enabled = TRUE) %>%
-    visOptions(manipulation = T) %>%
-    addFontAwesome(name = "font-awesome-visNetwork")
-```
