@@ -1,5 +1,5 @@
 # Connect to Neo4j-Aura from R
-## Visualize Neo4j data in R with the VisNetwork package
+### Visualize Neo4j data in R with the VisNetwork package
 
 The R programming language offers advanced visualization tools for "classic" data analysis with libraries like ggplot2 and plotly.
 
